@@ -2,7 +2,12 @@
 
 Unofficial API Client for querying data from Transantiago.
 
-# Usage
+---
+
+[![Build Status](https://travis-ci.org/muZk/transantiago-api-client.svg?branch=master)](https://travis-ci.org/muZk/transantiago-api-client)
+[![dependencies Status](https://david-dm.org/muZk/transantiago-api-client/status.svg)](https://david-dm.org/muZk/transantiago-api-client)
+
+## Usage
 
 ```javascript
 const transantiago = require('transantiago-api-client')

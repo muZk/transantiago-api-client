@@ -1,6 +1,6 @@
 {
   "name": "transantiago-api-client",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Unofficial API Client for querying data from Transantiago.",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,17 @@
       "mocha"
     ]
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muZk/transantiago-api-client.git"
+  },
+  "author": {
+    "email": "nicolas@gomezpespejo.com",
+    "name": "Nicolás Gómez",
+    "url": "gomezespejo.com",
+    "username": "muZk"
+  },
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0"
   },
