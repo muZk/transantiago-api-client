@@ -1,0 +1,25 @@
+{
+  "name": "transantiago-api-client",
+  "version": "1.0.0",
+  "description": "Unofficial API Client for querying data from Transantiago.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node_modules/.bin/mocha"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "moxios": "^0.4.0",
+    "standard": "^10.0.3"
+  }
+}
