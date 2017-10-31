@@ -7,6 +7,14 @@ Unofficial API Client for querying data from Transantiago.
 [![Build Status](https://travis-ci.org/muZk/transantiago-api-client.svg?branch=master)](https://travis-ci.org/muZk/transantiago-api-client)
 [![dependencies Status](https://david-dm.org/muZk/transantiago-api-client/status.svg)](https://david-dm.org/muZk/transantiago-api-client)
 
+## Installation
+
+    npm install transantiago-api-client
+
+Or with yarn:
+
+    yarn add transantiago-api-client
+
 ## Usage
 
 ```javascript
