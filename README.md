@@ -1,6 +1,6 @@
 # :oncoming_bus: Transantiago API Client
 
-Unofficial API Client for querying data from Transantiago.
+WIP - JS Wrapper for Transantiago API http://scltrans.it
 
 ---
 
@@ -18,17 +18,14 @@ Or with yarn:
 ## Usage
 
 ```javascript
-const transantiago = require('transantiago-api-client')
+const transantiago = require('transantiago-api-client');
 
-// Example response: https://www.transantiago.cl/restservice/rest/getpuntoparada?lat=-33.443018&lon=-70.65387
-const nearlyBusStops = transantiago.nearlyBusStops(-33.4443018, -70.65387)
+// Example response: https://api.scltrans.it/v1/stops?center_lat=-33.4443018&center_lon=-70.65387&radius=200
+const nearlyBusStops = transantiago.nearlyBusStops(-33.4443018, -70.65387, 200);
 
-// Example response: https://www.transantiago.cl/predictor/prediccion?codsimt=PA375&codser=
-const prediction = transantiago.prediction('PA375')
+// Example response: https://api.scltrans.it/v2/stops/PA375/next_arrivals
+const prediction = transantiago.prediction('PA375');
 
-// Example response: https://www.transantiago.cl/predictor/prediccion?codsimt=PA375&codser=406
-const prediction = transantiago.prediction('PA375', '406')
-
-// Example response: https://www.transantiago.cl/restservice/rest/getrecorrido/406
-const route = transantiago.route('406')
+// Example response: https://api.scltrans.it/v2/routes/406/directions
+const route = transantiago.route('406');
 ```

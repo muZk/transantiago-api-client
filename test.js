@@ -32,8 +32,14 @@ describe('Transantiago API Client', () => {
 
     it('calls the correct API endpoint', async () => {
       const serviceCode = '514'
-      const response = { paradero: serviceCode }
-      moxios.stubRequest('https://www.transantiago.cl/restservice/rest/getrecorrido/514', { status: 200, response })
+      const response = { results: [{ direction_id: 0 }] }
+      moxios.stubRequest(
+        `https://api.scltrans.it/v2/routes/${serviceCode}/directions`,
+        {
+          status: 200,
+          response
+        }
+      )
       const routeResponse = await transantiago.route(serviceCode)
       expect(routeResponse).to.equal(response)
     })
@@ -51,9 +57,17 @@ describe('Transantiago API Client', () => {
     it('calls the correct API endpoint', async () => {
       const lat = -33
       const lng = -70
-      const response = [{ id: 1 }, { id: 2 }]
-      moxios.stubRequest(`https://www.transantiago.cl/restservice/rest/getpuntoparada?lat=${lat}&lng=${lng}`, { status: 200, response })
-      const nearlyBusStopsResponse = await transantiago.nearlyBusStops(lat, lng)
+      const radius = 200
+      const response = { results: [{ id: 1 }, { id: 2 }] }
+      moxios.stubRequest(
+        `https://api.scltrans.it/v1/stops?center_lat=${lat}&center_lon=${lng}&radius=${radius}`,
+        { status: 200, response }
+      )
+      const nearlyBusStopsResponse = await transantiago.nearlyBusStops(
+        lat,
+        lng,
+        radius
+      )
       expect(nearlyBusStopsResponse).to.equal(response)
     })
   })
@@ -69,21 +83,30 @@ describe('Transantiago API Client', () => {
 
     context('when serviceCode is not specified', () => {
       it('calls the correct API endpoint', async () => {
-        const stopCode = 'PD111'
-        const response = [{ id: 1 }, { id: 2 }]
-        moxios.stubRequest(`https://www.transantiago.cl/predictor/prediccion?codsimt=${stopCode}&codser=`, { status: 200, response })
-        const predictionResponse = await transantiago.prediction(stopCode)
+        const stopId = 'PD111'
+        const response = { results: [{ id: 1 }, { id: 2 }] }
+        moxios.stubRequest(
+          `https://api.scltrans.it/v2/stops/${stopId}/next_arrivals`,
+          { status: 200, response }
+        )
+        const predictionResponse = await transantiago.prediction(stopId)
         expect(predictionResponse).to.equal(response)
       })
     })
 
     context('when serviceCode is specified', () => {
       it('calls the correct API endpoint', async () => {
-        const stopCode = 'PD111'
-        const serviceCode = '514'
-        const response = [{ id: 1 }, { id: 2 }]
-        moxios.stubRequest(`https://www.transantiago.cl/predictor/prediccion?codsimt=${stopCode}&codser=${serviceCode}`, { status: 200, response })
-        const predictionResponse = await transantiago.prediction(stopCode, serviceCode)
+        const stopId = 'PD111'
+        const routeId = '514'
+        const response = { results: [{ route_id: routeId }] }
+        moxios.stubRequest(
+          `https://api.scltrans.it/v2/stops/${stopId}/next_arrivals`,
+          { status: 200, response }
+        )
+        const predictionResponse = await transantiago.prediction(
+          stopId,
+          routeId
+        )
         expect(predictionResponse).to.equal(response)
       })
     })
