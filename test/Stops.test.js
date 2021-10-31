@@ -1,16 +1,19 @@
 const { expect } = require('chai')
 const sinon = require('sinon')
 const client = require('../src/api-client')
+const redClient = require('../src/api-red-client')
 
 describe('Stops', () => {
   const rutes = require('../src/Stops')
 
   beforeEach(() => {
     sinon.stub(client, 'get')
+    sinon.stub(redClient, 'get')
   })
 
   afterEach(() => {
     client.get.restore()
+    redClient.get.restore()
   })
 
   describe('properties', () => {
@@ -41,8 +44,8 @@ describe('Stops', () => {
   describe('.nextArrivals', () => {
     it('calls the correct API endpoint', () => {
       rutes.nextArrivals('a')
-      expect(client.get.called).to.eql(true)
-      expect(client.get.getCall(0).args[0]).to.eql('/v2/stops/a/next_arrivals')
+      expect(redClient.get.called).to.eql(true)
+      expect(redClient.get.getCall(0).args[0]).to.eql('/stops/a/next_arrivals')
     })
   })
 
