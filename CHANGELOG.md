@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/muZk/transantiago-api-client/compare/v2.0.0...v2.0.1) (2021-10-31)
+
+
+### Bug Fixes
+
+* change API endopoint for next Arrivals ([#2](https://github.com/muZk/transantiago-api-client/issues/2)) ([dd183c8](https://github.com/muZk/transantiago-api-client/commit/dd183c8))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/muZk/transantiago-api-client/compare/v1.0.0...v2.0.0) (2018-07-13)
 

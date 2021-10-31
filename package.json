@@ -1,6 +1,6 @@
 {
   "name": "transantiago-api-client",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "JS Wrapper for Transantiago API (http://scltrans.it)",
   "main": "./src/index.js",
   "scripts": {
